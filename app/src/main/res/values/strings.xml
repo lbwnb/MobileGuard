@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">App</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="_1_0">当前版本1.0</string>
+</resources>
