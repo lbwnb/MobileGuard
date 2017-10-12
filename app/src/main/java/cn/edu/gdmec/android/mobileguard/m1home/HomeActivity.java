@@ -17,6 +17,7 @@ import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m1home.adapter.HomeAdapter;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.InterPasswordDialog;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.SetUpPasswordDialog;
+import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.LostFindActivity;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5Utils;
 
 public class HomeActivity extends AppCompatActivity {
@@ -117,7 +118,7 @@ private void showInterPswdDialog(){
         public void confirm(){
             if(TextUtils.isEmpty(mInPswdDialog.getPassword()
             )){
-                Toast.makeText(HomeActivity.this,"密码不能为空！",0).show();
+                Toast.makeText(HomeActivity.this,"密码不能为空！",Toast.LENGTH_LONG).show();
             }else if (password.equals(MD5Utils.encode(mInPswdDialog.getPassword()))){
                 //进入防盗主界面
                 mInPswdDialog.dismiss();
@@ -125,7 +126,8 @@ private void showInterPswdDialog(){
             }else{
                 //对话框消失，弹出土司
                 mInPswdDialog.dismiss();
-                Toast.makeText(HomeActivity.this,"密码有误，请重新输入！",0).show();
+                startActivity(LostFindActivity.class);
+                Toast.makeText(HomeActivity.this,"密码有误，请重新输入！",Toast.LENGTH_LONG).show();
             }
         }
         @Override

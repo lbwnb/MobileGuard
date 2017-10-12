@@ -19,7 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".m1home.HomeActivity"></activity>
+        <activity android:name=".m1home.HomeActivity" />
+        <activity android:name=".m2theftguard.utils.LostFindActivity"/>
+        <activity android:name=".m2theftguard.utils.Setup1Activity"/>
+        <activity android:name=".m2theftguard.utils.Setup2Activity"/>
+        <activity android:name=".m2theftguard.utils.Setup3Activity"/>
+        <activity android:name=".m2theftguard.utils.Setup4Activity"/>
     </application>
 
 </manifest>
