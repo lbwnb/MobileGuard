@@ -122,11 +122,12 @@ private void showInterPswdDialog(){
             }else if (password.equals(MD5Utils.encode(mInPswdDialog.getPassword()))){
                 //进入防盗主界面
                 mInPswdDialog.dismiss();
+                startActivity(LostFindActivity.class);
                 Toast.makeText(HomeActivity.this,"可以进入手机防盗模块",Toast.LENGTH_LONG).show();
             }else{
                 //对话框消失，弹出土司
                 mInPswdDialog.dismiss();
-                startActivity(LostFindActivity.class);
+
                 Toast.makeText(HomeActivity.this,"密码有误，请重新输入！",Toast.LENGTH_LONG).show();
             }
         }

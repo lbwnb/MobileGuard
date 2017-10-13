@@ -79,9 +79,9 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:drawablePadding="5dp"
-                android:drawableTop="@drawable/lock_screen_icon_small"
-                android:gravity="center_vertical"
-                android:text="远程解锁"
+                android:drawableTop="@drawable/lock_screen_icon"
+                android:gravity="center"
+                android:text="远程锁屏"
                 android:textColor="@color/purple"/>
             <TextView
                 style="@style/textview16sp"
