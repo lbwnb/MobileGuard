@@ -148,7 +148,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:drawableLeft="@drawable/location_icon"
+                android:drawableLeft="@drawable/location_icon_small"
                 android:drawablePadding="5dp"
                 android:text="GPS追踪"
                 android:textColor="@color/purple"/>
@@ -196,7 +196,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:drawableLeft="@drawable/delete_data"
+                android:drawableLeft="@drawable/delete_data_small"
                 android:drawablePadding="5dp"
                 android:text="远程删除数据"
                 android:textColor="@color/purple" />

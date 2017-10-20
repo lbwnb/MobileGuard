@@ -1,4 +1,4 @@
-package cn.edu.gdmec.android.mobileguard.m2theftguard.utils;
+package cn.edu.gdmec.android.mobileguard.m2theftguard;
 
 import android.os.Bundle;
 import android.widget.RadioButton;

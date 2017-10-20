@@ -1,4 +1,4 @@
-package cn.edu.gdmec.android.mobileguard.m2theftguard.utils;
+package cn.edu.gdmec.android.mobileguard.m2theftguard;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
