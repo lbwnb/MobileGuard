@@ -16,6 +16,7 @@ import cn.edu.gdmec.android.mobileguard.m3communicationguard.db.dao.BlackNumberD
 public class InterceptSmsReciever extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
+
         SharedPreferences mSP = context.getSharedPreferences("config",
                 Context.MODE_PRIVATE);
         boolean BlackNumStatus = mSP.getBoolean("BlackNumStatus",true);
