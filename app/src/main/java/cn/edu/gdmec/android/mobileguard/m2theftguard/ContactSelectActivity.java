@@ -72,6 +72,7 @@ public class  ContactSelectActivity extends AppCompatActivity implements View.On
                 intent.putExtra("name",item.name);
                 setResult(0,intent);
                 finish();
+
             }
         });
     }
