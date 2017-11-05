@@ -40,15 +40,6 @@
         <activity android:name="cn.edu.gdmec.android.mobileguard.m3communicationguard.SecurityPhoneActivity" />
 
         <receiver
-            android:name="cn.edu.gdmec.android.mobileguard.m3communicationguard.receiver.IntercepCallReciever"
-            android:enabled="true"
-            android:exported="true" >
-            <intent-filter android:priority="2147483647" >
-                <action android:name="android.intent.action.PHONE_STATE" />
-                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
-            </intent-filter>
-        </receiver>
-        <receiver
             android:name="cn.edu.gdmec.android.mobileguard.m3communicationguard.receiver.interceptSmsReciever"
             android:enabled="true"
             android:exported="true" >
