@@ -15,7 +15,6 @@
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
 
-
     <application
         android:name="cn.edu.gdmec.android.mobileguard.App"
         android:allowBackup="false"
@@ -40,7 +39,16 @@
         <activity android:name="cn.edu.gdmec.android.mobileguard.m3communicationguard.SecurityPhoneActivity" />
 
         <receiver
-            android:name="cn.edu.gdmec.android.mobileguard.m3communicationguard.receiver.interceptSmsReciever"
+            android:name="cn.edu.gdmec.android.mobileguard.m3communicationguard.receiver.InterceptCallReciever"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter android:priority="2147483647" >
+                <action android:name="android.intent.action.PHONE_STATE" />
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="cn.edu.gdmec.android.mobileguard.m3communicationguard.receiver.InterceptSmsReciever"
             android:enabled="true"
             android:exported="true" >
             <intent-filter android:priority="2147483647" >
