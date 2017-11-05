@@ -18,6 +18,8 @@ import cn.edu.gdmec.android.mobileguard.m2theftguard.adapter.ContactAdapter;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.entity.ContactInfo;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.ContactInfoParser;
 
+
+
 /**
  * Created by Administrator on 2017/10/20/020.
  */
@@ -67,6 +69,7 @@ public class  ContactSelectActivity extends AppCompatActivity implements View.On
                 ContactInfo item = (ContactInfo) adapter.getItem(position);
                 Intent intent = new Intent();
                 intent.putExtra("phone",item.phone);
+                intent.putExtra("name",item.name);
                 setResult(0,intent);
                 finish();
             }
