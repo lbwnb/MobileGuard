@@ -85,7 +85,7 @@ import cn.edu.gdmec.android.mobileguard.m3communicationguard.entity.BlackContact
 @Test
     public void t5GetTotalNumber() throws Exception{
     BlackNumberDao dao = new BlackNumberDao(context);
-    int total = dao.getToatlNumber();
+    int total = dao.getTotalNumber();
     Log.i("TestBlackNumberDao","数据总条目: "+total);
 }
 /*测试号码是否在数据库中*/
