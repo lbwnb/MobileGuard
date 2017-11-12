@@ -2,7 +2,7 @@ package cn.edu.gdmec.android.mobileguard.m4appmanager.adapter;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.ViewDragHelper;
+//import android.support.v7.widget.RecyclerView;
 import android.text.format.Formatter;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +12,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import java.util.List;
 
 import cn.edu.gdmec.android.mobileguard.R;
+import cn.edu.gdmec.android.mobileguard.m4appmanager.adapter.AppManagerAdapter;
 import cn.edu.gdmec.android.mobileguard.m4appmanager.entity.AppInfo;
 import cn.edu.gdmec.android.mobileguard.m4appmanager.utils.DensityUtil;
 import cn.edu.gdmec.android.mobileguard.m4appmanager.utils.EngineUtils;
@@ -23,11 +25,13 @@ import cn.edu.gdmec.android.mobileguard.m4appmanager.utils.EngineUtils;
  * Created by Administrator on 2017/11/11.
  */
 
-public class AppManagerAdapter extends BaseAdapter {
+public class AppManagerAdapter extends BaseAdapter{
     private List<AppInfo> UserAppInfos;
     private List<AppInfo> SystemAppInfos;
     private Context context;
-    public AppManagerAdapter(List<AppInfo> userAppInfos, List<AppInfo> systemAppInfos, Context context){
+
+    public AppManagerAdapter(List<AppInfo> userAppInfos,
+                             List<AppInfo> systemAppInfos,Context context) {
         super();
         UserAppInfos = userAppInfos;
         SystemAppInfos = systemAppInfos;
@@ -35,65 +39,65 @@ public class AppManagerAdapter extends BaseAdapter {
     }
     @Override
     public int getCount() {
-        //因为有两个条目需要用于用户进程。因此要加2
-        return  UserAppInfos.size()+ SystemAppInfos.size()+2;
+        //因为有两个条目需要用于显示用户进程，系统进程因此需要加2
+        return UserAppInfos.size() + SystemAppInfos.size() + 2;
     }
+
     @Override
-    public Object getItem(int i){
-        if (i==0){
-            //第0个位置显示的应该是用户程序个数的标签
+    public Object getItem(int i) {
+        if (i == 0) {
             return null;
-        }else if (i==(UserAppInfos.size()+1)){
+        } else if (i == (UserAppInfos.size() + 1)) {
             return null;
         }
         AppInfo appInfo;
-        if (i < (UserAppInfos.size()+1)){
+        if (i < (UserAppInfos.size() + 1)){
             //用户程序
-            appInfo = UserAppInfos.get(i - 1);//又多了一个textview的标签
+            appInfo = UserAppInfos.get(i - 1); //多了一个textview的标签
             //位置需要-1
         }else {
             //系统程序
-            int location = i - UserAppInfos.size()-2;
+            int location = i - UserAppInfos.size() - 2;
             appInfo = SystemAppInfos.get(location);
         }
         return appInfo;
     }
 
-
     @Override
     public long getItemId(int i) {
-
         return 0;
     }
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-       //如果position为0.则为TextView
-        if (i==0){
-           TextView tv = getTextView();
-            tv.setText("用户程序:"+UserAppInfos.size()+"个");
+        //如果position 为0，则为textview
+        if (i == 0){
+            TextView tv = getTextView();
+            tv.setText("用户程序：" + UserAppInfos.size() + "个");
             return tv;
             //系统应用
-        }else if (i==(UserAppInfos.size()+1)){
+        }else if (i == (UserAppInfos.size() + 1)){
+            //position 0 为 textview
             TextView tv = getTextView();
-            tv.setText("系统程序："+SystemAppInfos.size()+"个");
+            tv.setText("系统程序：" + SystemAppInfos.size() + "个");
             return tv;
         }
         //获取到当前App的对象
         AppInfo appInfo;
-        if (i<(UserAppInfos.size()+1)){
-            //position 0 为textView
-            appInfo = UserAppInfos.get(i-1);
+        if (i <(UserAppInfos.size() + 1)){
+            //position 0 为textview
+            appInfo = UserAppInfos.get(i - 1);
         }else {
             //系统应用
-            appInfo = SystemAppInfos.get(i - UserAppInfos.size()-2);
+            appInfo = SystemAppInfos.get(i - UserAppInfos.size() - 2);
         }
         ViewHolder viewHolder = null;
-        if (view !=null & view instanceof LinearLayout){
-            viewHolder=(ViewHolder) view.getTag();
-        }else {
+        if (view != null & view instanceof LinearLayout){
+            viewHolder = (ViewHolder) view.getTag();
+        }else{
             viewHolder = new ViewHolder();
             view = View.inflate(context, R.layout.item_appmanager_list,null);
+            viewHolder.mAbouticonAppTV = (TextView) view.findViewById(R.id.tv_abouticon_app);
             viewHolder.mAppIconImgv = (ImageView) view.findViewById(R.id.imgv_appicon);
             viewHolder.mAppLocationTV = (TextView) view.findViewById(R.id.tv_appisroom);
             viewHolder.mAppSizeTV = (TextView) view.findViewById(R.id.tv_appsize);
@@ -105,7 +109,7 @@ public class AppManagerAdapter extends BaseAdapter {
             viewHolder.mAppOptionLL = (LinearLayout) view.findViewById(R.id.ll_option_app);
             view.setTag(viewHolder);
         }
-        if (appInfo !=null){
+        if (appInfo != null){
             viewHolder.mAppLocationTV.setText(appInfo.getAppLocation(appInfo.isInRoom));
             viewHolder.mAppIconImgv.setImageDrawable(appInfo.icon);
             viewHolder.mAppSizeTV.setText(Formatter.formatFileSize(context,appInfo.appSize));
@@ -121,12 +125,12 @@ public class AppManagerAdapter extends BaseAdapter {
         viewHolder.mSettingAppTV.setOnClickListener(listener);
         viewHolder.mShareAppTV.setOnClickListener(listener);
         viewHolder.mUninstallTV.setOnClickListener(listener);
+        viewHolder.mAbouticonAppTV.setOnClickListener(listener);
+
         return view;
     }
-    /**
-     * 创建一个TextView
-     * @return
-     */
+
+    //创建一个TextView
     private TextView getTextView(){
         TextView tv = new TextView(context);
         tv.setBackgroundColor(ContextCompat.getColor(context,R.color.graye5));
@@ -137,34 +141,38 @@ public class AppManagerAdapter extends BaseAdapter {
         tv.setTextColor(ContextCompat.getColor(context,R.color.black));
         return tv;
     }
+
     static class ViewHolder{
-        /** 启动app*/
+        //启动App
         TextView mLuanchAppTV;
-        /** 卸载app*/
+        //卸载App
         TextView mUninstallTV;
-        /** 分享app*/
+        //分享App
         TextView mShareAppTV;
-        /** 设置app*/
+        //设置App
         TextView mSettingAppTV;
-        /** app图标*/
+        //关于App
+        TextView mAbouticonAppTV;
+        //app图标
         ImageView mAppIconImgv;
-        /** app位置*/
+        //app位置
         TextView mAppLocationTV;
-        /** app大小*/
+        //app大小
         TextView mAppSizeTV;
-        /** app名称*/
+        //app名称
         TextView mAppNameTV;
-        /** 操作app的线性布局*/
+        //操作App的线性布局
         LinearLayout mAppOptionLL;
     }
     class MyClickListener implements View.OnClickListener{
         private AppInfo appInfo;
+
         public MyClickListener(AppInfo appInfo){
             super();
             this.appInfo = appInfo;
         }
         @Override
-        public void onClick(View v){
+        public void onClick(View v) {
             switch (v.getId()){
                 case R.id.tv_launch_app:
                     //启动应用
@@ -179,14 +187,20 @@ public class AppManagerAdapter extends BaseAdapter {
                     EngineUtils.SettingAppDetail(context,appInfo);
                     break;
                 case R.id.tv_uninstall_app:
-                    //卸载应用。需要注册广播接收者
+                    //卸载应用，需要注册广播接收者
                     if (appInfo.packageName.equals(context.getPackageName())){
-                        Toast.makeText(context,"你没有权限卸载此应用!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context,"您没有权限卸载此应用！",Toast.LENGTH_SHORT).show();
                         return;
                     }
                     EngineUtils.uninstallApplication(context,appInfo);
                     break;
+                case R.id.tv_abouticon_app:
+                    EngineUtils.AbouticonAppDetail(context,appInfo);
+                    break;
+
+
             }
         }
     }
 }
+

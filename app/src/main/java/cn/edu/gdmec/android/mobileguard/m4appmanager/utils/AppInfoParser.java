@@ -56,7 +56,6 @@ public class AppInfoParser {
            }else{
                //用户应用
                appinfo.isUserApp = true;
-               appinfo.isUserApp = true;
            }
            appInfos.add(appinfo);
             appinfo = null;
