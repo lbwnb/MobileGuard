@@ -27,6 +27,7 @@
         <TextView
             android:id="@+id/tv_appisroom"
             style="@style/textview14sp"
+            android:layout_marginTop="3dp"
             android:layout_alignLeft="@+id/tv_appname"
             android:layout_toRightOf="@+id/imgv_appicon"
             android:layout_below="@+id/tv_appname" />

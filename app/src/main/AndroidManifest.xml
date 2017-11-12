@@ -37,6 +37,7 @@
         <activity android:name="cn.edu.gdmec.android.mobileguard.m2theftguard.Setup4Activity" />
         <activity android:name="cn.edu.gdmec.android.mobileguard.m3communicationguard.AddBlackNumberActivity" />
         <activity android:name="cn.edu.gdmec.android.mobileguard.m3communicationguard.SecurityPhoneActivity" />
+        <activity android:name="cn.edu.gdmec.android.mobileguard.m4appmanager.AppManagerActivity"/>
 
         <receiver
             android:name="cn.edu.gdmec.android.mobileguard.m3communicationguard.receiver.InterceptCallReciever"

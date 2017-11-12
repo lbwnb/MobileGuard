@@ -23,11 +23,11 @@ import cn.edu.gdmec.android.mobileguard.m4appmanager.utils.EngineUtils;
  * Created by Administrator on 2017/11/11.
  */
 
-public class AppmanagerAdapter extends BaseAdapter {
+public class AppManagerAdapter extends BaseAdapter {
     private List<AppInfo> UserAppInfos;
     private List<AppInfo> SystemAppInfos;
     private Context context;
-    public AppmanagerAdapter(List<AppInfo> userAppInfos,List<AppInfo> systemAppInfos,Context context){
+    public AppManagerAdapter(List<AppInfo> userAppInfos, List<AppInfo> systemAppInfos, Context context){
         super();
         UserAppInfos = userAppInfos;
         SystemAppInfos = systemAppInfos;
@@ -62,6 +62,7 @@ public class AppmanagerAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {
+
         return 0;
     }
 
@@ -70,7 +71,7 @@ public class AppmanagerAdapter extends BaseAdapter {
        //如果position为0.则为TextView
         if (i==0){
            TextView tv = getTextView();
-            tv.setText("用户程序:"+SystemAppInfos.size()+"个");
+            tv.setText("用户程序:"+UserAppInfos.size()+"个");
             return tv;
             //系统应用
         }else if (i==(UserAppInfos.size()+1)){

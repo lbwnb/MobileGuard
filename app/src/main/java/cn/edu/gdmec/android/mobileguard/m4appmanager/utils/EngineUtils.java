@@ -20,7 +20,8 @@ public class EngineUtils {
         Intent intent = new Intent("android.intent.action.SEND");
         intent.addCategory("android.intent.category.DEFAULT");
         intent.setType("text/html");
-        intent.putExtra(Intent.EXTRA_TEXT,"推荐你使用一款软件，名称叫:"+ appInfo.appName+ "下载路径:https://play.google.com/store/apps/details?id="
+        intent.putExtra(Intent.EXTRA_TEXT,
+                "推荐你使用一款软件，名称叫:"+ appInfo.appName+ "下载路径:https://play.google.com/store/apps/details?id="
         + appInfo.packageName);
         context.startActivity(intent);
     }

@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.edu.gdmec.android.mobileguard.R;
-import cn.edu.gdmec.android.mobileguard.m4appmanager.adapter.AppmanagerAdapter;
+import cn.edu.gdmec.android.mobileguard.m4appmanager.adapter.AppManagerAdapter;
 import cn.edu.gdmec.android.mobileguard.m4appmanager.entity.AppInfo;
 import cn.edu.gdmec.android.mobileguard.m4appmanager.utils.AppInfoParser;
 
@@ -34,7 +34,7 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
     private List<AppInfo> appInfos;
     private List<AppInfo> userAppInfos = new ArrayList<AppInfo>();
     private List<AppInfo> systemAppInfos = new ArrayList<AppInfo>();
-    private AppmanagerAdapter adapter;
+    private AppManagerAdapter adapter;
     private TextView mAppNumTV;
     private UninstallRececiver receciver;
 
@@ -44,7 +44,7 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
             switch (msg.what){
                 case 10:
                     if (adapter == null){
-                        adapter = new AppmanagerAdapter(userAppInfos,systemAppInfos,AppManagerActivity.this);
+                        adapter = new AppManagerAdapter(userAppInfos,systemAppInfos,AppManagerActivity.this);
                     }
                     mListView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
@@ -58,18 +58,11 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
 
 
 
-    class UninstallRececiver extends BroadcastReceiver{
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            //收到广播了
-            initData();
-        }
-    }
+
 
     private void initData() {
         appInfos = new ArrayList<AppInfo>();
         new Thread(){
-            @Override
             public void run() {
                 appInfos.clear();
                 userAppInfos.clear();
@@ -86,6 +79,13 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
 
             };
         }.start();
+    }
+    class UninstallRececiver extends BroadcastReceiver{
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            //收到广播了
+            initData();
+        }
     }
 
     @Override
@@ -131,8 +131,8 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
 
         String str_avail_sd = Formatter.formatFileSize(this,avail_sd);
         String str_avail_rom = Formatter.formatFileSize(this,avail_rom);
-        mPhoneMemoryTV.setText("剩余手机内存"+str_avail_rom);
-        mSDMemoryTV.setText("剩余SD卡内存"+str_avail_sd);
+        mPhoneMemoryTV.setText("剩余手机内存"+ str_avail_rom);
+        mSDMemoryTV.setText("剩余SD卡内存"+ str_avail_sd);
     }
 
     private void initListener(){
@@ -140,12 +140,12 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
 
 
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+            public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
                 if (adapter !=null){
                     new Thread(){
                         @Override
                         public void run() {
-                            AppInfo mappInfo = (AppInfo) adapter.getItem(position);
+                            AppInfo mappInfo = (AppInfo) adapter.getItem(i);
                             boolean flag = mappInfo.isSelected;
                             for (AppInfo appInfo : userAppInfos){
                                 appInfo.isSelected = false;
@@ -163,6 +163,7 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
                             }
 
                         }
+                        ;
                     }.start();
                 }
 
@@ -171,12 +172,12 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
 
         mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {
+            public void onScrollStateChanged(AbsListView absListView, int i) {
 
             }
 
             @Override
-            public void onScroll(AbsListView view, int i, int visibleItemCount, int totalItemCount) {
+            public void onScroll(AbsListView absListView, int i, int i1, int i2) {
                 if(i >= userAppInfos.size()+1){
                     mAppNumTV.setText("系统程序："+systemAppInfos.size()+"个");
 
