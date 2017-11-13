@@ -1,6 +1,7 @@
 package cn.edu.gdmec.android.mobileguard.m4appmanager.utils;
 
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -35,6 +36,22 @@ public class AppInfoParser {
             appinfo.icon = icon;
             String appname = packInfo.applicationInfo.loadLabel(pm).toString();
             appinfo.appName = appname;
+            PackageInfo packactivityes = null;
+                        try {
+                               packactivityes = pm.getPackageInfo(packname, PackageManager.GET_ACTIVITIES);
+
+
+                                                ActivityInfo[] a = packactivityes.activities;
+                                    if (a != null) {
+                                          for (ActivityInfo activityInfo : a){
+                                            appinfo.appActivity = appinfo.appActivity + activityInfo.name + "\n";
+                                            }
+                                    }
+                            } catch (PackageManager.NameNotFoundException e) {
+                                e.printStackTrace();
+
+
+                            }
             //应用程序apk包的路径
      String apkpath = packInfo.applicationInfo.sourceDir;
             appinfo.apkPath = apkpath;

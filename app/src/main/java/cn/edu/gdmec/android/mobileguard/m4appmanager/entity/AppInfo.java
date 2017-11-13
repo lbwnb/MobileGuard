@@ -19,6 +19,8 @@ public class AppInfo {
     public long appSize;
     /** 是否手机储存*/
     public boolean isInRoom;
+    /**应用程序的活动*/
+    public String appActivity;
     /** 是否用户应用*/
     public boolean isUserApp;
     /** 是否选中，默认都为false*/

@@ -107,6 +107,7 @@ public class AppManagerAdapter extends BaseAdapter{
             viewHolder.mShareAppTV = (TextView) view.findViewById(R.id.tv_share_app);
             viewHolder.mUninstallTV = (TextView) view.findViewById(R.id.tv_uninstall_app);
             viewHolder.mAppOptionLL = (LinearLayout) view.findViewById(R.id.ll_option_app);
+            viewHolder.mActivityTV = (TextView) view.findViewById(R.id.tv_activity_app);
             view.setTag(viewHolder);
         }
         if (appInfo != null){
@@ -114,6 +115,7 @@ public class AppManagerAdapter extends BaseAdapter{
             viewHolder.mAppIconImgv.setImageDrawable(appInfo.icon);
             viewHolder.mAppSizeTV.setText(Formatter.formatFileSize(context,appInfo.appSize));
             viewHolder.mAppNameTV.setText(appInfo.appName);
+
             if (appInfo.isSelected){
                 viewHolder.mAppOptionLL.setVisibility(View.VISIBLE);
             }else {
@@ -126,7 +128,7 @@ public class AppManagerAdapter extends BaseAdapter{
         viewHolder.mShareAppTV.setOnClickListener(listener);
         viewHolder.mUninstallTV.setOnClickListener(listener);
         viewHolder.mAbouticonAppTV.setOnClickListener(listener);
-
+        viewHolder.mActivityTV.setOnClickListener(listener);
         return view;
     }
 
@@ -161,6 +163,7 @@ public class AppManagerAdapter extends BaseAdapter{
         TextView mAppSizeTV;
         //app名称
         TextView mAppNameTV;
+        TextView mActivityTV;
         //操作App的线性布局
         LinearLayout mAppOptionLL;
     }
@@ -197,6 +200,9 @@ public class AppManagerAdapter extends BaseAdapter{
                 case R.id.tv_abouticon_app:
                     EngineUtils.AbouticonAppDetail(context,appInfo);
                     break;
+                case R.id.tv_activity_app:
+                                        EngineUtils.activityApplication(context, appInfo);
+                                        break;
 
 
             }
