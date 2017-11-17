@@ -17,6 +17,7 @@
     <!--手机杀毒模块用到的 2017.11.13-->
     <color name="dark_gray">#ff999999</color>
     <color name="bright_red">#F22723</color>
+    <color name="white">#ffffff</color>
     <color name="blue">#2684DC</color>
     <color name="light_blue">#1671CE</color>
 </resources>
