@@ -15,8 +15,13 @@
             android:layout_height="80dp"
             android:layout_centerInParent="true"
             android:background="@drawable/virusscan_icon"/>
-
-
+        <TextView
+            android:id="@+id/tv_dbversion"
+            style="@style/textview16sp"
+            android:layout_above="@+id/tv_lastscantime"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:text="病毒数据库版本:"/>
         <TextView
             android:id="@+id/tv_lastscantime"
             style="@style/textview16sp"

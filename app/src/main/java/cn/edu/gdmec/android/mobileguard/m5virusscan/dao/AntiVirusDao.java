@@ -29,9 +29,7 @@ public class AntiVirusDao {
     public String checkVirus(String md5) {
         String desc = null;
         //打开病毒数据库
-        SQLiteDatabase db = SQLiteDatabase.openDatabase(
-                dbname, null,
-                SQLiteDatabase.OPEN_READONLY);
+        SQLiteDatabase db = SQLiteDatabase.openDatabase(dbname, null, SQLiteDatabase.OPEN_READONLY);
         Cursor cursor = db.rawQuery("select desc from datable where md5=?",
                 new String[]{md5});
         if (cursor.moveToNext()) {
@@ -40,5 +38,23 @@ public class AntiVirusDao {
         cursor.close();
         db.close();
         return desc;
+    }
+    //获取数据库版本
+    public String getVirusDbVersion() {
+        String dbVersion = null;
+        // 打开病毒数据库
+        SQLiteDatabase db = SQLiteDatabase.openDatabase(
+                dbname, null,
+                SQLiteDatabase.OPEN_READONLY);
+
+        Cursor cursor = db.rawQuery("select major||'.'||minor||'.'||build from version", null);
+
+        if (cursor.moveToNext()) {
+
+            dbVersion = cursor.getString(0);
+        }
+        cursor.close();
+        db.close();
+        return dbVersion;
     }
 }
