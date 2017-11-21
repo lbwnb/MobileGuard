@@ -3,11 +3,10 @@ package android.content.pm;
 
 // Declare any non-default types here with import statements
 
-interface IPackageStatsObserver {
+oneway interface IPackageStatsObserver {
     /**
      * Demonstrates some basic types that you can use as parameters
      * and return values in AIDL.
      */
-    void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat,
-            double aDouble, String aString);
+   onGetStatsCompleted(in PAckageStats pStats, boolean succeeded);
 }
