@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <include layout="@layout/titlebar"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="180dp"
@@ -15,6 +17,7 @@
             android:layout_height="80dp"
             android:layout_centerInParent="true"
             android:background="@drawable/broom_animation"/>
+
         <TextView
             android:id="@+id/tv_recomment_clean"
             style="@style/textview12sp"

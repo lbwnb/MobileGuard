@@ -41,7 +41,7 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
     private FrameLayout mFinishCleanFL;
     private TextView mSizeTV;
 
-    private Handler mHAndler = new Handler() {
+    private Handler mHandler = new Handler() {
         public void handleMessage(android.os.Message msg) {
             switch (msg.what) {
                 case CLEANNING :
@@ -92,7 +92,7 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
                     Message message =Message.obtain();
                     message.what = CLEANNING;
                     message.obj = memory;
-                    mHAndler.sendMessageDelayed(message,200);
+                    mHandler.sendMessageDelayed(message,200);
                 }
             };
         }.start();
@@ -121,6 +121,7 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
         mLeftImgv.setOnClickListener(this);
         mLeftImgv.setImageResource(R.drawable.back);
         animation = (AnimationDrawable)findViewById(R.id.imgv_trashbin_cacheclean).getBackground();
+        animation.setOneShot(false);
         animation.start();
         mMemoryTV = (TextView)findViewById(R.id.tv_cleancache_memory);
         mMemoryUnitTV = (TextView) findViewById(R.id.tv_cleancache_memoryunit);
