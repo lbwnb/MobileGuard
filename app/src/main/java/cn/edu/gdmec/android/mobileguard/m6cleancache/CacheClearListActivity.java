@@ -150,14 +150,14 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
             e.printStackTrace();
         }
     }
-    public class MyPackObserver extends android.content.pm.IPackageDataObserver.Stub {
+    public class MyPackObserver extends android.content.pm.IPackageStatsObserver.Stub {
         private PackageInfo info;
         public MyPackObserver(PackageInfo info)
         {
             this.info = info;
         }
         @Override
-        public void onGetStatsComleted(PackageStats pStats, boolean succeeded)
+        public void onGetStatsCompleted(PackageStats pStats, boolean succeeded)
                 throws RemoteException{
             long cachesize = pStats.cacheSize;
             if (cachesize>=0){

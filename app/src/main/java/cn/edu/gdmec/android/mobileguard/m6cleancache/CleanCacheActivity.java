@@ -141,7 +141,7 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
         }
     }
     class ClearCacheObserver extends android.content.pm.IPackageDataObserver.Stub{
-        public void onRemoveComleted(final String packageName,final boolean succeeded){
+        public void onRemoveCompleted(final String packageName,final boolean succeeded){
 
         }
     }
