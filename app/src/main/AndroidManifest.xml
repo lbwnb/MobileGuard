@@ -14,84 +14,84 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
-    <uses-permission android:name="android.permission.CLEAR_APP_CACHE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
+    <uses-permission android:name="android.permission.CLEAR_APP_CACHE" />
 
     <application
-        android:name="cn.edu.gdmec.android.mobileguard.App"
+        android:name=".App"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name="cn.edu.gdmec.android.mobileguard.m1home.HomeActivity" >
+        android:theme="@style/AppTheme">
+        <activity android:name=".m1home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="cn.edu.gdmec.android.mobileguard.SplashActivity" />
-        <activity android:name="cn.edu.gdmec.android.mobileguard.m2theftguard.LostFindActivity" />
-        <activity android:name="cn.edu.gdmec.android.mobileguard.m2theftguard.Setup1Activity" />
-        <activity android:name="cn.edu.gdmec.android.mobileguard.m2theftguard.Setup2Activity" />
-        <activity android:name="cn.edu.gdmec.android.mobileguard.m2theftguard.Setup3Activity" />
-        <activity android:name="cn.edu.gdmec.android.mobileguard.m2theftguard.Setup4Activity" />
-        <activity android:name="cn.edu.gdmec.android.mobileguard.m3communicationguard.AddBlackNumberActivity" />
-        <activity android:name="cn.edu.gdmec.android.mobileguard.m3communicationguard.SecurityPhoneActivity" />
-        <activity android:name="cn.edu.gdmec.android.mobileguard.m4appmanager.AppManagerActivity"/>
-        <activity android:name="cn.edu.gdmec.android.mobileguard.m5virusscan.VirusScanActivity"/>
-        <activity android:name="cn.edu.gdmec.android.mobileguard.m5virusscan.VirusScanSpeedActivity"/>
-        <activity android:name="cn.edu.gdmec.android.mobileguard.m6cleancache.CleanCacheActivity"/>
-        <activity android:name="cn.edu.gdmec.android.mobileguard.m6cleancache.CacheClearListActivity"/>
+        <activity android:name=".SplashActivity" />
+        <activity android:name=".m2theftguard.LostFindActivity" />
+        <activity android:name=".m2theftguard.Setup1Activity" />
+        <activity android:name=".m2theftguard.Setup2Activity" />
+        <activity android:name=".m2theftguard.Setup3Activity" />
+        <activity android:name=".m2theftguard.Setup4Activity" />
+        <activity android:name=".m3communicationguard.AddBlackNumberActivity" />
+        <activity android:name=".m3communicationguard.SecurityPhoneActivity" />
+        <activity android:name=".m4appmanager.AppManagerActivity" />
+        <activity android:name=".m5virusscan.VirusScanActivity" />
+        <activity android:name=".m5virusscan.VirusScanSpeedActivity" />
+        <activity android:name=".m6cleancache.CleanCacheActivity" />
+        <activity android:name=".m6cleancache.CacheClearListActivity" />
 
         <receiver
-            android:name="cn.edu.gdmec.android.mobileguard.m3communicationguard.receiver.InterceptCallReciever"
+            android:name=".m3communicationguard.receiver.InterceptCallReciever"
             android:enabled="true"
-            android:exported="true" >
-            <intent-filter android:priority="2147483647" >
+            android:exported="true">
+            <intent-filter android:priority="2147483647">
                 <action android:name="android.intent.action.PHONE_STATE" />
                 <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
             </intent-filter>
         </receiver>
         <receiver
-            android:name="cn.edu.gdmec.android.mobileguard.m3communicationguard.receiver.InterceptSmsReciever"
+            android:name=".m3communicationguard.receiver.InterceptSmsReciever"
             android:enabled="true"
-            android:exported="true" >
-            <intent-filter android:priority="2147483647" >
+            android:exported="true">
+            <intent-filter android:priority="2147483647">
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
         <receiver
-            android:name="cn.edu.gdmec.android.mobileguard.m2theftguard.receiver.BootCompleteReceiver"
+            android:name=".m2theftguard.receiver.BootCompleteReceiver"
             android:enabled="true"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
-        <activity android:name="cn.edu.gdmec.android.mobileguard.m2theftguard.ContactSelectActivity" />
+        <activity android:name=".m2theftguard.ContactSelectActivity" />
 
         <service
-            android:name="cn.edu.gdmec.android.mobileguard.m2theftguard.service.GPSLocationService"
+            android:name=".m2theftguard.service.GPSLocationService"
             android:enabled="true"
             android:exported="true" />
 
         <receiver
-            android:name="cn.edu.gdmec.android.mobileguard.m2theftguard.receiver.SmsLostFindReceiver"
+            android:name=".m2theftguard.receiver.SmsLostFindReceiver"
             android:enabled="true"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
         <receiver
-            android:name="cn.edu.gdmec.android.mobileguard.m2theftguard.receiver.MyDeviceAdminReceiver"
+            android:name=".m2theftguard.receiver.MyDeviceAdminReceiver"
             android:enabled="true"
             android:exported="true"
-            android:permission="android.permission.BIND_DEVICE_ADMIN" >
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
             <meta-data
                 android:name="android.app.device_admin"
                 android:resource="@xml/device_admin_sample" />
@@ -100,6 +100,16 @@
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
             </intent-filter>
         </receiver>
+
+        <service
+            android:name=".m8trafficmonitor.service.TrafficMonitoringService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver
+            android:name=".m8trafficmonitor.reciever.BootCompleteReciever"
+            android:enabled="true"
+            android:exported="true"></receiver>
     </application>
 
 </manifest>
