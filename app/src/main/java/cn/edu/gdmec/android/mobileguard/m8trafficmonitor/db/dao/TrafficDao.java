@@ -12,66 +12,56 @@ import java.util.Date;
 
 import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.db.TrafficOpenHelper;
 
-/**
- * Created by Administrator on 2017/11/28/028.
- */
+
 
 public class TrafficDao {
     private TrafficOpenHelper helper;
     public TrafficDao(Context context){
         helper = new TrafficOpenHelper(context);
     }
-    /**
-     * 获取某一天的流量
-     *
-     * @parm dataString
-     * @return
-     */
-    public long getMoblieGPRS(String dataString){
-        SQLiteDatabase db = helper,getReadableDatabase();
-                long gprs = 0;
+    /*
+    * 获取某一天用的流量*/
+    public long getMebileGPRS(String dataString){
+        SQLiteDatabase db = helper.getReadableDatabase();
+        long gprs = 0;
         Cursor cursor = db.rawQuery("select gprs from traffic where date=?",
-                new String[]{ "datetime("+dataString +")"});
-        if (cursor.moveToNext()){
+                new String[]{ "datetime(" + dataString + ")" });
+
+        if(cursor.moveToNext()) {
             String gprsStr = cursor.getString(0);
             if (!TextUtils.isEmpty(gprsStr))
                 gprs = Long.parseLong(gprsStr);
-        }else{
-            gprs = -1;
+        } else{
+                gprs = -1;
+            }
+            return gprs;
         }
-        return gprs;
-    }
-    /***
-     * 添加今天的
-     *
-     * @param gprs
-     */
+
+
+
+    //插入今天的数据
     public void insertTodayGPRS(long gprs){
-        SQLiteDatabase db =helper.getReadableDatabase();
+        SQLiteDatabase db = helper.getReadableDatabase();
         Date dNow = new Date();
-        Calendar calendar = Calendar.getInstance(); //得到日历
-        Calendar.setTime(dNow);//把当前时间赋给日历
+        Calendar calendar = Calendar.getInstance();//得到日历
+        calendar.setTime(dNow);//把当前的时间赋给日历
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String dataString = sdf.format(dNow);
         ContentValues values = new ContentValues();
         values.put("gprs",String.valueOf(gprs));
-        values.put("date","datetime(" +dataString+ ")");
+        values.put("date","datetime(" + dataString + ")");
         db.insert("traffic",null,values);
-    }
-    /***
-     * 修改今天的
-     *
-     * @param gprs
-     */
+}
+    //修改今天的数据
     public void UpdateTodayGPRS(long gprs){
-        SQLiteDatabase db = helper,getWritableDatabase();
+        SQLiteDatabase db = helper.getWritableDatabase();
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String dataString = sdf.format(date);
         ContentValues values = new ContentValues();
         values.put("gprs",String.valueOf(gprs));
-        values.put("date","datetime("+dataString+ ")");
-        db.update("traffic",values,"date=?",new String[]{ "datetime("
-                +dataString+")"});
+        values.put("date","datetime(" + dataString + ")");
+        db.update("traffic", values, "date=?",new String[] { "datetime("
+                + dataString + ")"});
     }
 }
