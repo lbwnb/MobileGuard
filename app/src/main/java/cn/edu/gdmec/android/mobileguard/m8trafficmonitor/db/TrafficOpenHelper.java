@@ -4,7 +4,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-
+/**
+ * Created by asus on 2017/11/26.
+ */
 
 public class TrafficOpenHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "traffic.db";

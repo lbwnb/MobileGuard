@@ -5,13 +5,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * Created by asus on 2017/11/1.
+ * Created by asus on 2017/10/29.
  */
 
 public class BlackNumberOpenHelper extends SQLiteOpenHelper {
     private static String DB_NAME="my_info";
     private static int VERSION=1;
-
     private static BlackNumberOpenHelper instance=null;
     public static BlackNumberOpenHelper getInstance(Context context){
         if (instance==null){
@@ -19,28 +18,24 @@ public class BlackNumberOpenHelper extends SQLiteOpenHelper {
         }
         return instance;
     }
-
-    public BlackNumberOpenHelper(Context context, String name,
-                                 SQLiteDatabase.CursorFactory factory,
-                                 int version) {
-        super(context, name, factory, version);
-        this.DB_NAME = name;
-        this.VERSION = version;
-    }
-
+   public BlackNumberOpenHelper(Context context, String name,SQLiteDatabase.CursorFactory factory, int version){
+       super(context,name,factory,version);
+       this.DB_NAME = name;
+       this.VERSION = version;
+   }
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("create table blacknumber "+
-                "(id integer primary key autoincrement," +
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("create table blacknumber"+
+                " (id integer primary key autoincrement,"+
                 "number varchar(20),"+
                 "name varchar(255),"+
                 "mode integer,"+
-                "type varchar(200))");
-
+                "type varchar(255))");
     }
 
+
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
 }

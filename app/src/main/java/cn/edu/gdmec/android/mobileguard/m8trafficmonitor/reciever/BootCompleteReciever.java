@@ -9,7 +9,9 @@ import android.util.Log;
 import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.service.TrafficMonitoringService;
 import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.utils.SystemInfoUtils;
 
-
+/**
+ * Created by asus on 2017/11/26.
+ */
 
 public class BootCompleteReciever extends BroadcastReceiver {
 

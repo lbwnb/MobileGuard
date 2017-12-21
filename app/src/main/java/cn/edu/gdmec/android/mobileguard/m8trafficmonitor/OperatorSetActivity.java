@@ -13,6 +13,9 @@ import android.widget.TextView;
 
 import cn.edu.gdmec.android.mobileguard.R;
 
+/**
+ * Created by asus on 2017/11/26.
+ */
 
 public class OperatorSetActivity extends AppCompatActivity implements View.OnClickListener {
     private Spinner mSelectSP;

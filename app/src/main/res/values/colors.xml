@@ -3,27 +3,27 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <!--手机防盗模块需要用到 2017-10-10-->
-    <color name="purple">#5542B8</color>
-    <!--通讯卫士用到-->
-    <color name="bright_purple">#C218D9</color>
+    <color name="purple">#5542BB</color>
+    <color name="bright_purple">#c218D9</color>
     <color name="light_gary">#D1D0CE</color>
-    <!--软件管家模块用到 2017.11.11-->
+    <!--软件管家模块-->
     <color name="black30">#30000000</color>
     <color name="black">#000000</color>
     <color name="graye5">#E5E5E5</color>
     <color name="bright_yellow">#FEC425</color>
     <color name="transparent">#00000000</color>
-    <!--手机杀毒模块用到的 2017.11.13-->
+    <!--病毒查杀模块-->
+    <color name="blue">#2684DC</color>
+    <color name="white">#ffffff</color>
+    <color name="light_blue">#1671CE</color>
     <color name="dark_gray">#ff999999</color>
     <color name="bright_red">#F22723</color>
-    <color name="white">#ffffff</color>
-    <color name="blue">#2684DC</color>
-    <color name="light_blue">#1671CE</color>
-    <!--缓存清理模块用到的 2017.11.18 -->
+    <!--缓存清理-->
     <color name="light_rose_red">#F73CA7</color>
     <color name="rose_red">#E72993</color>
-    <!--流量统计模块用到的 2017.11.28-->
+    <!--流量统计模块  2017.11.27-->
     <color name="bright_green">#26E587</color>
     <color name="light_green">#55DC28</color>
+    <!--高级工具模块用的-->
+    <color name="deep_gray">#ff666666</color>
 </resources>

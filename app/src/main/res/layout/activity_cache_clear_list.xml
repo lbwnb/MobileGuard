@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <include layout="@layout/titlebar"/>
 
     <RelativeLayout
@@ -19,7 +17,7 @@
             android:background="@drawable/broom_animation"/>
 
         <TextView
-            android:id="@+id/tv_recomment_clean"
+            android:id="@+id/tv_recommend_clean"
             style="@style/textview12sp"
             android:layout_width="150dp"
             android:layout_alignParentBottom="true"
@@ -29,6 +27,7 @@
             android:maxLength="26"
             android:singleLine="true"
             android:textColor="@color/white"/>
+
         <TextView
             android:id="@+id/tv_can_clean"
             style="@style/textview12sp"
@@ -45,18 +44,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="10"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:gravity="center">
-            <Button
-                android:id="@+id/btn_cleanall"
-                android:layout_width="312dp"
-                android:layout_height="40dp"
-                android:background="@drawable/cleancache_btn_selector"
-                android:enabled="false"/>
-        </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_cleanall"
+            android:layout_width="312dp"
+            android:layout_height="40dp"
+            android:background="@drawable/cleancache_btn_selector"
+            android:enabled="false"/>
+    </LinearLayout>
 
 </LinearLayout>

@@ -5,7 +5,9 @@ import android.content.Context;
 
 import java.util.List;
 
-
+/**
+ * Created by asus on 2017/11/26.
+ */
 
 public class SystemInfoUtils {
     /**

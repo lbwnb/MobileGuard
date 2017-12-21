@@ -4,41 +4,40 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ObbInfo;
+import android.os.Handler;
 import android.telephony.SmsMessage;
-import android.util.Log;
 
 import cn.edu.gdmec.android.mobileguard.m3communicationguard.db.dao.BlackNumberDao;
 
 /**
- * Created by asus on 2017/11/1.
+ * Created by asus on 2017/10/29.
  */
 
-public class InterceptSmsReciever extends BroadcastReceiver {
+public class InterceptSmsReciever extends BroadcastReceiver{
+
     @Override
     public void onReceive(Context context, Intent intent) {
-
-        SharedPreferences mSP = context.getSharedPreferences("config",
-                Context.MODE_PRIVATE);
+        SharedPreferences mSP = context.getSharedPreferences("config",Context.MODE_APPEND);
         boolean BlackNumStatus = mSP.getBoolean("BlackNumStatus",true);
-        if (!BlackNumStatus){
+        if(!BlackNumStatus){
             //黑名单拦截关闭
             return;
         }
-        //如果是黑名单 则终止广播
+        //如果是黑名单，则终止广播
         BlackNumberDao dao = new BlackNumberDao(context);
-        Object[] objs =  (Object[]) intent.getExtras().get("pdus");
-        for (Object obj:objs){
-            SmsMessage smsMessage = SmsMessage.createFromPdu((byte[])obj);
+        Object[] objs = (Object[]) intent.getExtras().get("pdus");
+        for(Object obj:objs){
+            SmsMessage smsMessage = SmsMessage.createFromPdu((byte[]) obj);
             String sender = smsMessage.getOriginatingAddress();
-            String body =smsMessage.getMessageBody();
+            String body = smsMessage.getMessageBody();
             if (sender.startsWith("+86")){
                 sender = sender.substring(3,sender.length());
+
             }
-            //根据号码查询黑名单信息
             int mode = dao.getBlackContactMode(sender);
-            Log.d("-------","onReceive:"+mode);
             if (mode==2||mode==3){
-                //需要拦截短信,拦截广播
+                //需要拦截的短信，拦截广播
                 abortBroadcast();
             }
         }
